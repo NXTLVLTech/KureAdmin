@@ -1,0 +1,275 @@
+<div class="wrapper" *ngIf="authService.currentUser">
+        <div class="sidebar" data-active-color="rose" data-background-color="black" style="background-image: url('../assets/img/sidebar-5.jpg');" >
+
+            <div class="sidebar-wrapper">
+                <div class="user">
+                    <div class="photo">
+                        <img src="../assets/img/kure_logo.png" />
+                    </div>
+                    <div class="info">
+                        <a data-toggle="collapse" href="#collapseExample" class="collapsed">
+                            <span>
+                                Tania Andrew
+                                <b class="caret"></b>
+                            </span>
+                        </a>
+                        <div class="clearfix"></div>
+                        <div class="collapse" id="collapseExample">
+                            <ul class="nav">
+                                <li>
+                                    <a href="#"  (click)="logout()">
+                                        <!-- <span class="sidebar-mini"> MP </span> -->
+                                        <span class="sidebar-normal"> Logout</span>
+                                    </a>
+                                </li>
+                                <!-- <li>
+                                    <a href="#">
+                                        <span class="sidebar-mini"> EP </span>
+                                        <span class="sidebar-normal"> Edit Profile </span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        <span class="sidebar-mini"> S </span>
+                                        <span class="sidebar-normal"> Settings </span>
+                                    </a>
+                                </li> -->
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <ul class="nav">
+                    <li>
+                        <a href="/home">
+                            <i class="material-icons">people</i>
+                            <p> Users </p>
+                        </a>
+                    </li>
+
+                     <li class="active" >
+                        <a href="/booking">
+                            <i class="material-icons">done</i>
+                            <p> Bookings</p>
+                        </a>
+                    </li>
+
+                     <li>
+                        <a href="/push">
+                            <i class="material-icons">speaker_notes</i>
+                            <p> Push Notification</p>
+                        </a>
+                    </li>
+
+
+                </ul>
+            </div>
+        </div>
+        <div class="main-panel" >
+            <nav class="navbar navbar-transparent navbar-absolute">
+                <div class="container-fluid">
+                    <div class="navbar-minimize">
+                        <button id="minimizeSidebar" class="btn btn-round btn-white btn-fill btn-just-icon">
+                            <i class="material-icons visible-on-sidebar-regular">more_vert</i>
+                            <i class="material-icons visible-on-sidebar-mini">view_list</i>
+                        </button>
+                    </div>
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle" data-toggle="collapse">
+                            <span class="sr-only">Toggle navigation</span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                        <a class="navbar-brand" href="#">  </a>
+                    </div>
+
+                </div>
+            </nav>
+
+
+
+            <div class="content" data-background-color="black" data-image="../assets/img/sidebar_new.jpeg">
+                <div class="container-fluid" style="margin-top:-40px;">
+
+
+              <div class="card">
+                 <form class="form-horizontal">
+                 <div class="col-md-12">
+                   <div class="col-md-6">
+                     <button class="btn" style="opacity: 0.3;">
+                       <span class="btn-label"><i class="material-icons">keyboard_arrow_left</i></span>Previous
+                       <div class="ripple-container"></div></button>
+                      <button class="btn" style="opacity: 0.3;">Next<span class="btn-label"><i class="material-icons">keyboard_arrow_right</i></span>
+                      <div class="ripple-container"></div></button>
+                      </div><div class="col-md-3"></div>
+                     <!--  <div class="col-md-3">
+                     <a class="btn btn-danger pull-right">Delete Element</a></div> -->
+                 </div>
+                 </form>
+             </div>
+
+
+                     <!-- <div class="col-md-12"> -->
+                            <div class="card">
+                                <div class="card-header card-header-icon" data-background-color="rose" style ="padding: 8px 14px;">
+                                    <i class="material-icons">assignment</i>
+                                </div>
+                                 <div class="card-header card-header-icon" data-background-color="rose" style="padding: 8px 14px;float: right;"><i class="material-icons">add</i></div>
+                                <div class="card-content">
+                                    <h4 class="card-title" style = "margin-top: -9px;">Users</h4>
+
+
+
+                                    <div class="table-responsive">
+
+                                     <table class="table">
+                                     <thead>
+                                                <tr>
+                                                    <!-- <th class="text-center">#</th> -->
+
+                                                    <th>Items</th>
+                                                    <!-- <th>Actions</th> -->
+                                                   <!--  <th>FirstName</th>
+                                                    <th>Email</th>
+                                                    <th class="text-center">PhoneNumber</th>
+                                                    <th class="text-right">Age</th> -->
+
+                                                    <th class="text-right">Actions</th>
+                                                </tr>
+                                            </thead>
+
+                                            <tbody>
+                                            <tr *ngFor="let key of (bookings | async) let rowIndex = index ">
+
+                                                    <td style="color: #00EDFF !important;font-weight: bold;">
+                                                      <a class="booking_edit" href="booking-detail/{{key.$key}}"> Item {{rowIndex+1}}</a>
+                                                    </td>
+                                                    <td class="td-actions text-right">
+                                                       <span class="btn btn-simple btn-warning btn-icon edit">
+                                                         <a  href="booking-detail/{{key.$key}}"><i class="material-icons edit">mode edit</i></a>
+                                                       </span>
+
+                                                   <span data-toggle="modal" data-target="#myModal" class="btn btn-simple btn-dangers btn-icon delete" style="color:#00EDFF;" (click)="delete_modal(key.$key)"><i class="material-icons">delete</i></span>
+
+                                                       </td>
+
+
+                                            </tr>
+                                           <!--  <tr>
+
+                                                    <td>
+                                                    <a href="/"> Item 1</a>
+                                                    </td>
+                                                    <td class="td-actions text-right">
+                                                       <span class="btn btn-simple btn-warning btn-icon edit"><i class="material-icons">mode edit</i></span>
+
+                                                       <span class="btn btn-simple btn-dangers btn-icon delete" style="color:#00EDFF;"><i class="material-icons">delete</i></span>
+                                                    </tr> -->
+                                                 <!--    <tr>
+                                                    <td>
+                                                    <a href=""> Item 2</a>
+                                                    </td>
+                                                    <td class="td-actions text-right">
+                                                       <span class="btn btn-simple btn-warning btn-icon edit"><i class="material-icons">mode edit</i></span>
+
+                                                       <span class="btn btn-simple btn-dangers btn-icon delete" style="color:#00EDFF;"><i class="material-icons">delete</i></span>
+
+                                                     </tr> -->
+                                                   <!--  <tr>
+                                                    <td>
+                                                    <a href=""> Item 3</a>
+                                                    </td>
+                                                    <td class="td-actions text-right">
+                                                       <span class="btn btn-simple btn-warning btn-icon edit"><i class="material-icons">mode edit</i></span>
+
+                                                       <span class="btn btn-simple btn-dangers btn-icon delete" style="color:#00EDFF;"><i class="material-icons">delete</i></span>
+
+                                                    </tr> -->
+                                                   <!--  <tr><td>
+                                                    <a href=""> Item 4</a>
+                                                    </td>
+                                                    <td class="td-actions text-right">
+                                                       <span class="btn btn-simple btn-warning btn-icon edit"><i class="material-icons">mode edit</i></span>
+
+                                                       <span class="btn btn-simple btn-dangers btn-icon delete" style="color:#00EDFF;"><i class="material-icons">delete</i></span>
+
+                                                    </tr> -->
+                                                    <!-- <td><b>{{item.firstName}}</b></td>
+
+                                                    <td><b>{{item.email}}</b></td>
+                                                    <td class="text-center"><b>{{item.phoneNumber}}</b></td>
+                                                    <td class="text-right"><b>{{item.age}}</b></td>
+                                                    <td class="td-actions text-right">
+                                                       <span class="btn btn-simple btn-warning btn-icon edit"><i class="material-icons">mode edit</i></span>
+
+                                                       <span class="btn btn-simple btn-dangers btn-icon delete" style="color:#00EDFF;"><i class="material-icons">delete</i></span> -->
+
+
+                                                       <!--  <button type="button" rel="tooltip" class="btn btn-success">
+                                                            <i class="material-icons">edit</i>
+                                                        </button>
+                                                        <button type="button" rel="tooltip" class="btn btn-danger">
+                                                            <i class="material-icons">close</i>
+                                                        </button> -->
+
+
+
+
+
+
+                                            </tbody>
+                                        </table>
+
+<!-- Modal -->
+<div id="myModal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title"></h4>
+        <span><h3 class="center-block">Delete data</h3></span>
+<div class="col-md-12"><div class="alert alert-danger">
+<button type="button" aria-hidden="true" class="close"><i class="material-icons">close</i></button>
+<span>All data at this location, incuding nested data, will be deleted!</span></div>
+</div>
+      </div>
+      <div class="modal-body">
+       <div class="col-md-12">Data Location</div>
+<div class="col-md-12"><b>bookings/{{delete_id}}</b></div>
+<div class="col-sm-12" style="margin-top: 80px;">
+<div class="col-sm-6"></div>
+<div class="col-sm-3 center-block"><a class="btn btn-info center-block" data-dismiss="modal">Cancel</a></div>
+<div class="col-sm-3 center-block"><a class="btn btn-danger center-block" (click)="delete(delete_key)">Delete</a>
+</div>
+</div>
+      </div>
+      <div class="modal-footer">
+      <!--   <button type="button" class="btn btn-default" data-dismiss="modal">Close</button> -->
+      </div>
+    </div>
+
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+                                    <!-- </div> -->
+                                </div>
+                            </div>
+                        </div>
+
+                </div>
+            </div>
+<footer class="footer"><div class="container-fluid"><nav class="pull-left"><ul></ul></nav><p class="copyright pull-right"><!-- react-text: 85 -->©<!-- /react-text --><script>document.write(new Date().getFullYear())</script><a href="#">KURE</a><!-- react-text: 88 -->, <!-- /react-text --><!-- react-text: 89 -->Developed by NXTLVL.<!-- /react-text --><!-- react-text: 90 -->.<!-- /react-text --></p></div></footer>
+
+
+        </div>
+    </div>

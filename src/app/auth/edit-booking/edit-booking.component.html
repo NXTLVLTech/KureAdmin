@@ -1,0 +1,193 @@
+<div class="wrapper" *ngIf="authService.currentUser">
+  <div class="sidebar" data-active-color="rose" data-background-color="black" style="background-image: url('../assets/img/sidebar-5.jpg');" >
+    <!--
+Tip 1: You can change the color of active element of the sidebar using: data-active-color="purple | blue | green | orange | red | rose"
+Tip 2: you can also add an image using data-image tag
+Tip 3: you can change the color of the sidebar with data-background-color="white | black"
+-->
+    <!--  <div class="logo">
+         <a href="http://www.creative-tim.com" class="simple-text logo-mini">
+             CT
+         </a>
+         <a href="http://www.creative-tim.com" class="simple-text logo-normal">
+             Creative Tim
+         </a>
+     </div> -->
+    <div class="sidebar-wrapper">
+      <div class="user">
+        <div class="photo">
+          <img src="../assets/img/kure_logo.png" />
+        </div>
+        <div class="info">
+          <a data-toggle="collapse" href="#collapseExample" class="collapsed">
+                            <span>
+                                Tania Andrew
+                                <b class="caret"></b>
+                            </span>
+          </a>
+          <div class="clearfix"></div>
+          <div class="collapse" id="collapseExample">
+            <ul class="nav">
+              <li>
+                <a href="#"  (click)="logout()">
+                  <!-- <span class="sidebar-mini"> MP </span> -->
+                  <span class="sidebar-normal"> Logout</span>
+                </a>
+              </li>
+              <!-- <li>
+                  <a href="#">
+                      <span class="sidebar-mini"> EP </span>
+                      <span class="sidebar-normal"> Edit Profile </span>
+                  </a>
+              </li>
+              <li>
+                  <a href="#">
+                      <span class="sidebar-mini"> S </span>
+                      <span class="sidebar-normal"> Settings </span>
+                  </a>
+              </li> -->
+            </ul>
+          </div>
+        </div>
+      </div>
+      <ul class="nav">
+        <li class="active">
+          <a href="/home">
+            <i class="material-icons">people</i>
+            <p> Users </p>
+          </a>
+        </li>
+
+        <li >
+          <a href="/booking">
+            <i class="material-icons">done</i>
+            <p> Bookings</p>
+          </a>
+        </li>
+
+        <li>
+          <a href="/push">
+            <i class="material-icons">speaker_notes</i>
+            <p> Push Notification</p>
+          </a>
+        </li>
+
+
+      </ul>
+    </div>
+  </div>
+  <div class="main-panel" >
+    <nav class="navbar navbar-transparent navbar-absolute">
+      <div class="container-fluid">
+        <div class="navbar-minimize">
+          <button id="minimizeSidebar" class="btn btn-round btn-white btn-fill btn-just-icon">
+            <i class="material-icons visible-on-sidebar-regular">more_vert</i>
+            <i class="material-icons visible-on-sidebar-mini">view_list</i>
+          </button>
+        </div>
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#">  </a>
+        </div>
+
+      </div>
+    </nav>
+
+
+
+    <div class="content" data-background-color="black" data-image="../assets/img/sidebar_new.jpeg">
+      <div class="container-fluid" style="margin-top:-40px;">
+        <div class="card">
+          <form class="form-horizontal">
+            <div class="col-md-12">
+              <div class="col-md-6">
+                <button class="btn" style="opacity: 0.3;">
+                  <span class="btn-label"><i class="material-icons">keyboard_arrow_left</i></span>Previous
+                  <div class="ripple-container"></div></button>
+                <button class="btn" style="opacity: 0.3;">Next<span class="btn-label"><i class="material-icons">keyboard_arrow_right</i></span>
+                  <div class="ripple-container"></div></button>
+              </div><div class="col-md-3"></div>
+             <!--  <div class="col-md-3">
+                <a class="btn btn-danger pull-right">Delete Element</a></div> -->
+            </div>
+          </form>
+        </div>
+        <div class="col-md-12">
+          <div class="card">
+            <a>
+              <div id="addDiv" class="card-header card-header-icon" data-background-color="purple" style="float: right;">
+                <i class="material-icons">add</i>
+              </div>
+            </a>
+            <form class="form-horizontal">
+              <div class="card-header card-header-text" data-background-color="rose">
+                <h4 class="card-title">Fields</h4>
+              </div>
+              <div *ngFor="let entry of editable | async ; let rowIndex = index">
+                <div class="card-content" *ngIf="entry.key !== 'userUID'">
+                  <div class="row">
+                    <label class="col-sm-3 label-on-left">{{entry.$key | camelCase}}</label>
+                    <div class="col-sm-8">
+                      <div class="form-group label-floating is-empty">
+                        <label class="control-label"></label>
+                        <input type="text" class=" form-control" (change)= "updateValue(entry.$key, $event)" [value]="entry.$value">
+                      </div>
+                    </div>
+                    <div class="col-sm-1">
+                      <a>
+                  <span class="btn btn-simple  btn-icon edit label-on-left" data-toggle="modal" data-target="#myModal"  style="color:#00EDFF;" (click)="delete_modal(entry.$key)">
+                  <i class="material-icons">remove_circle_outline</i>
+                  </span>
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+
+      </div>
+    </div>
+    <footer class="footer"><div class="container-fluid"><nav class="pull-left"><ul></ul></nav><p class="copyright pull-right"><!-- react-text: 85 -->©<!-- /react-text --><script>document.write(new Date().getFullYear())</script><a href="#">KURE</a><!-- react-text: 88 -->, <!-- /react-text --><!-- react-text: 89 -->Developed by NXTLVL.<!-- /react-text --><!-- react-text: 90 -->.<!-- /react-text --></p></div></footer>
+
+    <!-- Modal -->
+    <div id="myModal" class="modal fade" role="dialog">
+      <div class="modal-dialog">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+            <h4 class="modal-title"></h4>
+            <span><h3 class="center-block">Delete data</h3></span>
+            <div class="col-md-12"><div class="alert alert-danger">
+            <button type="button" aria-hidden="true" class="close"><i class="material-icons">close</i></button>
+            <span>All data at this location, incuding nested data, will be deleted!</span></div>
+            </div>
+                  </div>
+                  <div class="modal-body">
+                   <div class="col-md-12">Data Location</div>
+            <div class="col-md-12"><b>bookings/{{delete_id}}</b></div>
+            <div class="col-sm-12" style="margin-top: 80px;">
+              <div class="col-sm-6"></div>
+                <div class="col-sm-3 center-block"><a class="btn btn-info center-block" data-dismiss="modal">Cancel</a></div>
+                <div class="col-sm-3 center-block"><a class="btn btn-danger center-block" (click)="delete(delete_id)">Delete</a>
+              </div>
+            </div>
+          </div>
+          <div class="modal-footer">
+          <!--   <button type="button" class="btn btn-default" data-dismiss="modal">Close</button> -->
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+</div>

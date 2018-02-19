@@ -1,0 +1,14 @@
+.full-page:before {
+    background-color: rgba(0, 0, 0, 0);
+}
+.card [data-background-color="rose"] {
+    background: linear-gradient(60deg, #00EDFF, #00EDFF);
+    box-shadow: 0 4px 20px 0px rgba(0, 0, 0, 0.14), 0 7px 10px -5px rgba(3, 178, 255, 0.4);
+    border: solid #ffffff thin;
+}
+
+.btn.btn-rose.btn-simple, .navbar .navbar-nav > li > a.btn.btn-rose.btn-simple {
+    background-color: transparent;
+    color: #00EDFF;
+    box-shadow: none;
+}

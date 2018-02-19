@@ -1,0 +1,111 @@
+{{checkUserInfo()}}
+<div  *ngIf="!authService.isUserEmailLoggedIn">
+<nav class="navbar navbar-primary navbar-transparent navbar-absolute">
+<div class="container">
+<div class="navbar-header">
+<a class="navbar-brand" href="#"></a></div>
+<div class="collapse navbar-collapse">
+<ul class="nav navbar-nav navbar-right">
+<li class=" active "><a><i class="material-icons">fingerprint</i>Login</a></li>
+</ul>
+</div>
+</div>
+</nav>
+
+<div class="wrapper wrapper-full-page"><div class="full-page login-page" data-image="../assets/img/kure_logo.png">
+<div class="content"><div class="">
+<div class="row">
+
+		
+<div class="col-md-4 col-sm-6 col-md-offset-4 col-sm-offset-3">
+<form (ngSubmit)="onLoginEmail()">
+<div class="card card-login">
+<div class="card-header text-center" data-background-color="rose">
+<h4 class="">Login</h4></div>
+<div class="card-content"><div></div>
+<h4></h4>
+<div class="input-group">
+<span class="input-group-addon"><i class="material-icons">email</i></span>
+<div class="form-group label-floating">
+<label class="control-label">Email address</label>
+<!-- <input type="email" value="admin@admin.com" class="form-control" > -->
+<input type="text" class="form-control" id="email" name="email" required [(ngModel)]="email">
+
+</div></div>
+
+<div class="input-group">
+<span class="input-group-addon"><i class="material-icons">lock_outline</i></span>
+<div class="form-group label-floating"><label class="control-label">Password</label>
+<!-- <input type="password" value="Getkured1" class="form-control"> -->
+<input type="password" class="form-control" id="password" name="password" required [(ngModel)]="password">
+
+</div>
+</div></div>
+<div class="footer text-center">
+<p *ngIf="errorMessage.length > 0" class="text-danger">
+			{{errorMessage}}</p>
+ 
+		<p *ngIf="error.message.length > 0" class="text-danger">
+			{{error.message}}</p>
+<input type="submit" class="btn btn-rose btn-simple btn-wd btn-lg">
+</div>
+</div></form>
+
+</div></div></div></div>
+
+<div class="full-page-background" style="background-image: url(../assets/img/kure_logo.png) ;"></div></div></div>
+
+	<!-- <div style="width: 350px;" *ngIf="isNewUser">
+ 
+		<p *ngIf="errorMessage.length > 0" class="text-danger">
+			{{errorMessage}}</p>
+ 
+		<p *ngIf="error.message.length > 0" class="text-danger">
+			{{error.message}}</p>
+ 
+		<form (ngSubmit)="onSignUp()">
+			<div class="form-group">
+				<label for="email">Email</label>
+				<input type="email" class="form-control" id="email" name="email" required [(ngModel)]="email">
+			</div>
+ 
+			<div class="form-group">
+				<label for="password">Password</label>
+				<input type="password" class="form-control" id="password" name="password" required [(ngModel)]="password">
+			</div>
+ 
+			<button type="submit" class="btn btn-success">Register</button>
+		</form>
+ 
+		<h4 class="text-primary" (click)="changeForm()">Already have an Account? >> Log In</h4>
+	</div> -->
+ 
+	<!-- <div style="width: 350px;" >
+ 
+		<p *ngIf="errorMessage.length > 0" class="text-danger">
+			{{errorMessage}}</p>
+ 
+		<p *ngIf="error.message.length > 0" class="text-danger">
+			{{error.message}}</p>
+ 
+		<form (ngSubmit)="onLoginEmail()">
+			<div class="form-group">
+				<label for="email">Email</label>
+				<input type="text" class="form-control" id="email" name="email" required [(ngModel)]="email">
+			</div>
+ 
+			<div class="form-group">
+				<label for="password">Password</label>
+				<input type="password" class="form-control" id="password" name="password" required [(ngModel)]="password">
+			</div>
+ 
+			<button type="submit" class="btn btn-success">Log In</button>
+		</form> -->
+ 
+		<!-- <h4 class="text-primary" (click)="changeForm()">Not have any Account yet? >> Register</h4> -->
+ 
+		<!-- <a *ngIf="!resetPassword && isValidMailFormat(email)" class="text-danger" (click)="sendResetEmail()">Reset Password for {{email}}</a>
+		<p *ngIf="resetPassword" class="text-success">Check your email to reset password!</p> -->
+ 
+	<!-- </div> -->
+</div>
